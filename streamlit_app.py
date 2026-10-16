@@ -1,4 +1,5 @@
 import streamlit as st
+from pathlib import Path
 
 st.set_page_config(
     page_title="유나라 | 자기소개",
@@ -80,7 +81,7 @@ st.markdown(
     .snoopy-stage {
         position: relative;
         display: flex;
-        min-height: 340px;
+        min-height: 145px;
         align-items: center;
         justify-content: center;
         overflow: hidden;
@@ -100,11 +101,16 @@ st.markdown(
     .snoopy-stage img {
         position: relative;
         z-index: 1;
-        width: min(78%, 300px);
-        max-height: 310px;
+        width: min(55%, 150px);
+        max-height: 135px;
         object-fit: contain;
         filter: drop-shadow(0 12px 8px rgba(35, 83, 106, .12));
         animation: arrive .8s ease-out both;
+    }
+    [data-testid="stImage"] img {
+        border: 3px solid rgba(255,255,255,.95);
+        border-radius: 14px;
+        box-shadow: 0 12px 28px rgba(35, 83, 106, .16);
     }
     .cloud-note {
         position: absolute;
@@ -165,8 +171,8 @@ st.markdown(
         .block-container { padding: 1.25rem 1rem 2.5rem; }
         .hero-copy { padding: 2.3rem 0 1.2rem; }
         .hero-copy h1 { font-size: 2.55rem; }
-        .snoopy-stage { min-height: 270px; }
-        .snoopy-stage img { max-height: 245px; }
+        .snoopy-stage { min-height: 125px; }
+        .snoopy-stage img { max-height: 115px; }
         .cloud-note { top: 7%; right: 2%; }
         .section { margin-top: 2.4rem; }
         .roadmap { grid-template-columns: 1fr; }
@@ -210,6 +216,7 @@ with hero_text:
     )
 
 with hero_art:
+    st.image(Path(__file__).parent / "img" / "30404유나라.JPG", width=280)
     st.markdown(
         f'<div class="snoopy-stage"><span class="cloud-note">오늘도 좋은 하루! ☁️</span><img src="{SNOOPY_IMAGE}" alt="스누피 캐릭터" /></div>',
         unsafe_allow_html=True,
